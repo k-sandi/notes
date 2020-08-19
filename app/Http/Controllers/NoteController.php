@@ -35,7 +35,13 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+          'title' => 'required',
+          'description' => 'required'
+        ]);
+
+        $note = Note::create($data);
+        return response($note, 201); //akan ditampilkan dalam bentuk response
     }
 
     /**
