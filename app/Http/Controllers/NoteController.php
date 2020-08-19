@@ -12,9 +12,16 @@ class NoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function all()
     {
         //
+        $notes = Note::all();
+        return response($notes, 200);
+    }
+
+    public function one($noteId) {
+      $note = Note::find($noteId);
+      return response($note, 200);
     }
 
     /**
